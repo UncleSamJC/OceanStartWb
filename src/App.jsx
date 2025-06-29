@@ -6,12 +6,13 @@ import Products from './pages/Products';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Navbar />
-      <main>
+      <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -21,6 +22,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }
