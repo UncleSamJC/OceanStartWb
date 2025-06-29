@@ -1,15 +1,129 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-white text-lg font-bold">OceanStar</Link>
-        <div className="space-x-4">
-          <Link to="/" className="text-gray-300 hover:text-white">Home</Link>
-          <Link to="/products" className="text-gray-300 hover:text-white">Products</Link>
-          <Link to="/contact" className="text-gray-300 hover:text-white">Contact</Link>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white text-xl font-bold">OS</span>
+            </div>
+            <span className="text-2xl font-bold text-gray-900">OceanStar</span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-1">
+            {[
+              { to: '/', text: 'Home' },
+              { to: '/about', text: 'About' },
+              { to: '/products', text: 'Products' },
+              { to: '/services', text: 'Services' },
+              { to: '/blog', text: 'Blog' }
+            ].map((item) => (
+              <Link
+                key={item.text}
+                to={item.to}
+                className="group relative px-4 py-2"
+              >
+                <div className="nav-text-wrap relative">
+                  <div className="text-gray-600 transform transition-transform group-hover:-translate-y-full">
+                    {item.text}
+                  </div>
+                  <div className="text-gray-900 absolute top-0 left-0 transform translate-y-full transition-transform group-hover:translate-y-0">
+                    {item.text}
+                  </div>
+                </div>
+              </Link>
+            ))}
+            
+            <Link
+              to="/contact"
+              className="ml-4 relative group flex items-center justify-center bg-white border-2 border-gray-200 rounded-full w-[200px] h-10 hover:h-[45px] hover:border-blue-500 transition-all duration-300"
+            >
+              <div className="flex items-center space-x-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span className="text-gray-900">Contact Us Now</span>
+                <div className="transform transition-transform group-hover:translate-x-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h12M4 18h8"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      <div
+        className={`md:hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        } overflow-hidden bg-white border-t border-gray-200`}
+      >
+        <div className="px-4 pt-2 pb-3 space-y-1">
+          {[
+            { to: '/', text: 'Home' },
+            { to: '/about', text: 'About' },
+            { to: '/products', text: 'Products' },
+            { to: '/services', text: 'Services' },
+            { to: '/blog', text: 'Blog' }
+          ].map((item) => (
+            <Link
+              key={item.text}
+              to={item.to}
+              className="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.text}
+            </Link>
+          ))}
+          <Link
+            to="/contact"
+            className="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-md"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <div className="flex items-center space-x-2">
+              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+              <span>Contact Us Now</span>
+            </div>
+          </Link>
         </div>
       </div>
     </nav>
