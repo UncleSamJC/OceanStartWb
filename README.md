@@ -23,3 +23,33 @@ EmailJS 	发送留言表单到邮箱
 
 字体：
 "Plus Jakarta Sans", "Plus Jakarta Sans Placeholder", sans-serif
+
+
+Project Note:
+Project Overview:
+  - React + Vite frontend application for a real estate company
+  - Modern tech stack: React 19, Vite, Tailwind CSS, React Router
+  - Responsive design with mobile navigation
+  - Contact form integration with EmailJS
+  - Ensure mobile responsiveness of the website
+
+  Key Features:
+  - Multi-page SPA with Home, About, Products, Services, Blog, Contact pages
+  - Component-based architecture with reusable UI elements
+  - FAQ section, blog abstracts, CTA sections
+  - Form handling with react-hook-form
+  - Reference HTML version included for design comparison
+
+  Tech Stack:
+  - Frontend: React 19.1.0, Vite 7.0.0
+  - Styling: Tailwind CSS 3.4.17
+  - Routing: React Router DOM 7.6.3
+  - Forms: React Hook Form 7.59.0
+  - Email: EmailJS 4.4.1
+  - Linting: ESLint 9.29.0
+
+  Project Structure:
+  - Clean component organization with basic UI components
+  - Separate pages for different sections
+  - Reference HTML version for design guidance
+  - Proper build/dev/lint scripts configured
