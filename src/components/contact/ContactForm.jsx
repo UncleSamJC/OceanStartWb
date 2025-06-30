@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
+import { createClient } from '@supabase/supabase-js';
 import SectionBadge from '../basic/SectionBadge';
+
+// Initialize Supabase client
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,22 +59,21 @@ function ContactForm() {
   // Upload file to Supabase Storage
   const uploadFileToSupabase = async (file) => {
     try {
-      // TODO: Initialize Supabase client
-      // const { createClient } = require('@supabase/supabase-js');
-      // const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
       
-      const fileName = `${Date.now()}-${file.name}`;
+      const { data, error } = await supabase.storage
+        .from('contact-attachments')
+        .upload(fileName, file, {
+          cacheControl: '3600',
+          upsert: false
+        });
       
-      // TODO: Upload to Supabase Storage
-      // const { data, error } = await supabase.storage
-      //   .from('contact-attachments')
-      //   .upload(fileName, file);
+      if (error) {
+        console.error('Storage upload error:', error);
+        throw new Error(`File upload failed: ${error.message}`);
+      }
       
-      // if (error) throw error;
-      // return data.path;
-      
-      // Placeholder return for now
-      return `uploads/${fileName}`;
+      return data.path;
     } catch (error) {
       console.error('Error uploading file:', error);
       throw error;
@@ -78,21 +83,17 @@ function ContactForm() {
   // Save contact data to Supabase
   const saveContactToSupabase = async (contactData) => {
     try {
-      // TODO: Initialize Supabase client if not already done
-      // const { createClient } = require('@supabase/supabase-js');
-      // const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      const { data, error } = await supabase
+        .from('contact_list')
+        .insert([contactData])
+        .select();
       
-      // TODO: Insert into contactlist table
-      // const { data, error } = await supabase
-      //   .from('contactlist')
-      //   .insert([contactData]);
+      if (error) {
+        console.error('Database insert error:', error);
+        throw new Error(`Failed to save contact: ${error.message}`);
+      }
       
-      // if (error) throw error;
-      // return data;
-      
-      // Placeholder for now
-      console.log('Contact data to be saved:', contactData);
-      return contactData;
+      return data;
     } catch (error) {
       console.error('Error saving contact:', error);
       throw error;
@@ -118,27 +119,11 @@ function ContactForm() {
         email: data.email,
         phone: data.phone || null,
         message: data.message,
-        attachment_url: fileUrl,
-        created_at: new Date().toISOString(),
+        attachment_url: fileUrl
       };
       
       // Save contact to Supabase
       await saveContactToSupabase(contactData);
-      
-      // Send email notification via EmailJS
-      await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          phone: data.phone,
-          message: data.message,
-          hasAttachment: uploadedFile ? 'Yes' : 'No',
-        },
-        'YOUR_PUBLIC_KEY'
-      );
       
       setSubmitStatus('success');
       reset();
@@ -150,6 +135,11 @@ function ContactForm() {
     } catch (error) {
       console.error('Error submitting form:', error);
       setSubmitStatus('error');
+      
+      // Show specific error message if available
+      if (error.message) {
+        console.error('Specific error:', error.message);
+      }
     } finally {
       setIsSubmitting(false);
     }
