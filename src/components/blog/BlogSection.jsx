@@ -98,9 +98,9 @@ function BlogSection() {
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <SectionBadge className="mb-6">Real Estate Insights</SectionBadge>
+          <SectionBadge className="mb-6">Share Our Insights</SectionBadge>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 max-w-4xl mx-auto leading-tight">
-            Explore the Market. Learn from Experts. Make Smarter Moves.
+            Explore the Market. Learn from Experts. Make Smarter Choices.
           </h2>
         </div>
 

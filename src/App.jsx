@@ -7,6 +7,12 @@ import Services from './pages/Services';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Footer from './components/Footer';
+import AdminLogin from './pages/admin/Login';
+import AdminDashboard from './pages/admin/DashBoard';
+import AdminBlogEditor from './pages/admin/BlogEditor';
+import AdminProductEditor from './pages/admin/ProductEditor';
+import AdminReviewMessages from './pages/admin/ReviewMessages';
+
 
 function App() {
   return (
@@ -20,6 +26,11 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/blogeditor" element={<AdminBlogEditor />} />
+          <Route path="/admin/producteditor" element={<AdminProductEditor />} />
+          <Route path="/admin/reviewmessages" element={<AdminReviewMessages />} />
         </Routes>
       </main>
       <Footer />
