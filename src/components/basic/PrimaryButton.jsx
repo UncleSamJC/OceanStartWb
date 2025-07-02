@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { trackButtonClick } from '../../lib/analytics';
 
 const PrimaryButton = ({ text, to = "#", bgColor = "bg-white", showDot = true }) => {
+  const handleClick = () => {
+    trackButtonClick(text, window.location.pathname);
+  };
+
   return (
     <Link
       to={to}
+      onClick={handleClick}
       className={`ml-4 relative group flex items-center justify-center border-2 border-gray-200 rounded-full w-[200px] h-10 hover:h-[45px] hover:border-blue-500 transition-all duration-300 ${bgColor}`}
     >
       <div className="flex items-center space-x-2">

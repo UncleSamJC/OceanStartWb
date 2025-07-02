@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SectionBadge from '../components/basic/SectionBadge';
+
 
 const SocialIcon = ({ href, children }) => (
   <a
@@ -30,9 +32,8 @@ function CTASection() {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-4">
-              Get in Touch
-            </div>
+            
+            <SectionBadge className="mb-4">Get in Touch</SectionBadge>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Let's Make Your Property Journey Effortless
             </h2>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { supabase } from '../../lib/supabase';
 import SectionBadge from '../basic/SectionBadge';
+import { trackContactForm } from '../../lib/analytics';
 
 function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -118,6 +119,9 @@ function ContactForm() {
       
       // Save contact to Supabase
       await saveContactToSupabase(contactData);
+      
+      // Track successful form submission
+      trackContactForm('Contact Page');
       
       setSubmitStatus('success');
       reset();
@@ -297,7 +301,7 @@ function ContactForm() {
                   : 'bg-blue-600 hover:bg-blue-700 active:bg-blue-800'
               }`}
             >
-              {isSubmitting ? 'Please wait...' : 'Book a Call'}
+              {isSubmitting ? 'Please wait...' : 'Submit'}
             </button>
           </form>
         </div>

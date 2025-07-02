@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import SectionBadge from '../basic/SectionBadge';
 import { supabase } from '../../lib/supabase';
 
@@ -131,7 +132,7 @@ function BlogSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {blogs.map((blog) => (
               <article key={blog.id} className="blog-item bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">
-                <a href={`/blog/${blog.slug}`} className="block">
+                <Link to={`/blog/${blog.slug}`} className="block">
                   {/* Blog Image */}
                   <div className="blog-image-wrap overflow-hidden">
                     <img
@@ -191,7 +192,7 @@ function BlogSection() {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </article>
             ))}
           </div>

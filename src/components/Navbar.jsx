@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PrimaryButton from './basic/PrimaryButton';
+import { trackButtonClick } from '../lib/analytics';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,6 +30,7 @@ function Navbar() {
               <Link
                 key={item.text}
                 to={item.to}
+                onClick={() => trackButtonClick(`Nav - ${item.text}`, 'Header')}
                 className="group relative px-4 py-2"
               >
                 <div className="nav-text-wrap relative">
