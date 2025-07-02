@@ -5,6 +5,13 @@ import { supabase } from '../../lib/supabase';
 function AdminDashboard() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState({
+    blogPosts: 0,
+    totalMessages: 0,
+    recentMessages: 0,
+    products: 0
+  });
+  const [statsLoading, setStatsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +29,7 @@ function AdminDashboard() {
     };
 
     checkUser();
+    fetchStats();
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
@@ -34,6 +42,47 @@ function AdminDashboard() {
 
     return () => subscription.unsubscribe();
   }, [navigate]);
+
+  const fetchStats = async () => {
+    try {
+      setStatsLoading(true);
+      
+      // Get blog posts count
+      const { count: blogCount } = await supabase
+        .from('blog_posts')
+        .select('*', { count: 'exact', head: true });
+      
+      // Get total messages count
+      const { count: totalMessagesCount } = await supabase
+        .from('contact_list')
+        .select('*', { count: 'exact', head: true });
+      
+      // Get recent messages (last 48 hours)
+      const twoDaysAgo = new Date();
+      twoDaysAgo.setHours(twoDaysAgo.getHours() - 48);
+      
+      const { count: recentMessagesCount } = await supabase
+        .from('contact_list')
+        .select('*', { count: 'exact', head: true })
+        .gte('created_at', twoDaysAgo.toISOString());
+      
+      // Get products count
+      const { count: productsCount } = await supabase
+        .from('products')
+        .select('*', { count: 'exact', head: true });
+      
+      setStats({
+        blogPosts: blogCount || 0,
+        totalMessages: totalMessagesCount || 0,
+        recentMessages: recentMessagesCount || 0,
+        products: productsCount || 0
+      });
+    } catch (error) {
+      console.error('Error fetching stats:', error);
+    } finally {
+      setStatsLoading(false);
+    }
+  };
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -85,7 +134,13 @@ function AdminDashboard() {
                 <div className="ml-5 w-0 flex-1">
                   <dl>
                     <dt className="text-sm font-medium text-gray-500 truncate">Blog Posts</dt>
-                    <dd className="text-lg font-medium text-gray-900">Coming Soon</dd>
+                    <dd className="text-lg font-medium text-gray-900">
+                      {statsLoading ? (
+                        <div className="animate-pulse bg-gray-200 h-6 w-16 rounded"></div>
+                      ) : (
+                        `Total Posts: ${stats.blogPosts}`
+                      )}
+                    </dd>
                   </dl>
                 </div>
               </div>
@@ -101,7 +156,21 @@ function AdminDashboard() {
                 <div className="ml-5 w-0 flex-1">
                   <dl>
                     <dt className="text-sm font-medium text-gray-500 truncate">Contact Messages</dt>
-                    <dd className="text-lg font-medium text-gray-900">Coming Soon</dd>
+                    <dd className="text-lg font-medium text-gray-900">
+                      {statsLoading ? (
+                        <div className="animate-pulse bg-gray-200 h-6 w-20 rounded mb-1"></div>
+                      ) : (
+                        `Total Messages: ${stats.totalMessages}`
+                      )}
+                    </dd>
+                    <dd className="text-sm font-medium text-gray-600">
+                      {statsLoading ? (
+                        <div className="animate-pulse bg-gray-200 h-5 w-24 rounded"></div>
+                      ) : (
+                        `Last 48h: ${stats.recentMessages}`
+                      )}
+                    </dd>
+
                   </dl>
                 </div>
               </div>
@@ -117,7 +186,13 @@ function AdminDashboard() {
                 <div className="ml-5 w-0 flex-1">
                   <dl>
                     <dt className="text-sm font-medium text-gray-500 truncate">Products</dt>
-                    <dd className="text-lg font-medium text-gray-900">Coming Soon</dd>
+                    <dd className="text-lg font-medium text-gray-900">
+                      {statsLoading ? (
+                        <div className="animate-pulse bg-gray-200 h-6 w-16 rounded"></div>
+                      ) : (
+                        `Total: ${stats.products}`
+                      )}
+                    </dd>
                   </dl>
                 </div>
               </div>
