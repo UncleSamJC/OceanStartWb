@@ -52,7 +52,7 @@ function Hero() {
         backgroundImage:
           `linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),radial-gradient(circle,transparent,#0006),url(${heroImage})`,
         backgroundPosition: '0 0, 0 0, 50% 100%',
-        backgroundSize: 'auto, auto, cover',
+        backgroundSize: 'auto, auto, top',
       }}>
         {/* 内容层 */}
         <div className="hero-content relative z-10 flex flex-col gap-8 items-start max-w-3xl w-4/5 px-10">

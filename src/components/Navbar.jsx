@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PrimaryButton from './basic/PrimaryButton';
 import { trackButtonClick } from '../lib/analytics';
+import logoImg1 from '../assets/images/logo-ca.png';
+import logoImg2 from '../assets/images/logo-global.jpg';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,10 +14,20 @@ function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-              <span className="text-white text-xl font-bold">OS</span>
-            </div>
-            <span className="text-2xl font-bold text-gray-900">OceanStar</span>
+            <img 
+              src={logoImg1} 
+              alt="OceanStar Logo" 
+              className="h-auto w-auto sm:h-10 md:h-16 object-contain transition-all duration-200"
+            />
+          </Link>
+
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2">
+            <img 
+              src={logoImg2} 
+              alt="OceanStar Logo" 
+              className="h-auto w-auto sm:h-10 md:h-16 object-contain transition-all duration-200"
+            />
           </Link>
 
           {/* Desktop Navigation */}
