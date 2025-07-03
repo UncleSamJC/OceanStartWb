@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SecondaryButton from './basic/SecondaryButton';
+import heroImage from '../assets/images/rq-hero-secion-bg.jpg';
 
 const AchieveItem = ({ value, label }) => (
   <div className="flex flex-col gap-1 achieve-list">
@@ -49,7 +50,7 @@ function Hero() {
       {/* 背景层 */}
       <div className="hero-bg-wrap absolute inset-0 w-full h-full rounded-3xl flex items-center bg-cover bg-center" style={{
         backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),radial-gradient(circle,transparent,#0006),url('https://cdn.prod.website-files.com/6784794885cc7b8dbfb185e2/6784958c2c4ad0bc028ac10a_hero-bg-v4.jpg')",
+          `linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),radial-gradient(circle,transparent,#0006),url(${heroImage})`,
         backgroundPosition: '0 0, 0 0, 50% 100%',
         backgroundSize: 'auto, auto, cover',
       }}>
@@ -62,14 +63,14 @@ function Hero() {
               ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[30px]'}`
             }
           >
-            Find Your Perfect Home Today
+            Customizaiton Embroidery Printing
           </h1>
           <div className="hero-description w-4/5 text-white text-lg font-light">
-            We provide tailored real estate solutions, guiding you through every step with personalized experiences that meet your unique needs and aspirations.
+            We offer full customization with high-quality embroidery and vibrant printing to help your team look unified and professional.
           </div>
           <SecondaryButton
-            to="/products"
-            text="Explore Properties"
+            to="/services"
+            text="Explore Services"
             className="button primary w-inline-block mt-2"
           />
           <div className="achieves-wrap flex gap-10 mt-10">
