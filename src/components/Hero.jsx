@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SecondaryButton from './basic/SecondaryButton';
-import heroImage from '../assets/images/rq-hero-secion-bg.jpg';
+import heroImage from '../assets/images/rq-hero-secion-bg-1920.jpg';
 
 const AchieveItem = ({ value, label }) => (
   <div className="flex flex-col gap-1 achieve-list">
@@ -63,7 +63,7 @@ function Hero() {
               ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[30px]'}`
             }
           >
-            Customizaiton Embroidery Printing
+            Customization Embroidery Printing
           </h1>
           <div className="hero-description w-4/5 text-white text-lg font-light">
             We offer full customization with high-quality embroidery and vibrant printing to help your team look unified and professional.

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PrimaryButton from './basic/PrimaryButton';
 import { trackButtonClick } from '../lib/analytics';
-import logoImg1 from '../assets/images/logo-ca.png';
-import logoImg2 from '../assets/images/logo-global.jpg';
+import logoImg1 from '../assets/images/logo-ca-400.jpg';
+import logoImg2 from '../assets/images/logo-global-400.jpg';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
