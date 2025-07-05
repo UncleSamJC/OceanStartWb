@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SecondaryButton from './basic/SecondaryButton';
-import heroImage from '../assets/images/rq-hero-secion-bg-1920.jpg';
+import ThirdButton from './basic/ThirdButton';
+import heroBgImage from '../assets/images/rq-hero-secion-bg.jpg';
 
 const AchieveItem = ({ value, label }) => (
   <div className="flex flex-col gap-1 achieve-list">
@@ -46,38 +47,44 @@ function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="hero-section max-w-7xl w-full min-h-screen mb-20 mx-auto pt-24 pb-10 relative">
+    <section id="hero" className="hero-section max-w-7xl w-full h-[85vh] mb-20 mx-auto pt-20 pb-10 relative mt-3">
       {/* 背景层 */}
-      <div className="hero-bg-wrap absolute inset-0 w-full h-full rounded-3xl flex items-center bg-cover bg-center" style={{
+      <div className="hero-bg-wrap absolute inset-0 w-full h-full rounded-3xl flex items-start pt-16 bg-cover bg-center" style={{
         backgroundImage:
-          `linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),radial-gradient(circle,transparent,#0006),url(${heroImage})`,
+          `linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)),radial-gradient(circle,transparent,#0006),url(${heroBgImage})`,
         backgroundPosition: '0 0, 0 0, 50% 100%',
-        backgroundSize: 'auto, auto, top',
+        backgroundSize: 'auto, auto, cover',
       }}>
         {/* 内容层 */}
-        <div className="hero-content relative z-10 flex flex-col gap-8 items-start max-w-3xl w-4/5 px-10">
+        <div className="hero-content relative z-10 flex flex-col gap-8 items-start max-w-4xl w-4/5 px-10">
           <h1
             className={
-              `hero-heading uppercase text-white text-5xl md:text-7xl font-bold leading-none
+              `hero-heading uppercase text-white text-4xl md:text-6xl font-bold leading-none
               transition-all duration-1000
               ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-[30px]'}`
             }
           >
-            Customization Embroidery Printing
+            <span className='block'>
+              Clothing Customization
+            </span>
+            <span className='block'>
+              Embroidery 
+            </span>
+            <span className='block'>
+               Printing
+            </span>
+            
           </h1>
           <div className="hero-description w-4/5 text-white text-lg font-light">
             We offer full customization with high-quality embroidery and vibrant printing to help your team look unified and professional.
           </div>
-          <SecondaryButton
-            to="/services"
-            text="Explore Services"
-            className="button primary w-inline-block mt-2"
-          />
+          <ThirdButton to="/services">Explore Services</ThirdButton>
           <div className="achieves-wrap flex gap-10 mt-10">
             {achieves.map((item, i) => (
               <AchieveItem key={i} value={item.value} label={item.label} />
             ))}
           </div>
+
         </div>
 
       </div>

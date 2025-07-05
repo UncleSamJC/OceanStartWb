@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import PrimaryButton from './basic/PrimaryButton';
-import { trackButtonClick } from '../lib/analytics';
-import logoImg1 from '../assets/images/logo-ca-400.jpg';
-import logoImg2 from '../assets/images/logo-global-400.jpg';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import PrimaryButton from "./basic/PrimaryButton";
+import { trackButtonClick } from "../lib/analytics";
+import logoImg1 from "../assets/images/logo-ca.jpg";
+import logoImg2 from "../assets/images/logo-global.jpg";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,37 +12,39 @@ function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src={logoImg1} 
-              alt="OceanStar Logo" 
-              className="h-auto w-auto sm:h-10 md:h-16 object-contain transition-all duration-200"
-            />
-          </Link>
+          <div className="flex gap-1">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-2">
+              <img
+                src={logoImg1}
+                alt="OceanStar Logo"
+                className="h-auto w-auto sm:h-10 md:h-16 object-contain transition-all duration-200"
+              />
+            </Link>
 
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src={logoImg2} 
-              alt="OceanStar Logo" 
-              className="h-auto w-auto sm:h-10 md:h-16 object-contain transition-all duration-200"
-            />
-          </Link>
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-2">
+              <img
+                src={logoImg2}
+                alt="OceanStar Logo"
+                className="h-auto w-auto sm:h-10 md:h-16 object-contain transition-all duration-200"
+              />
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {[
-              { to: '/', text: 'Home' },
-              { to: '/about', text: 'About' },
-              { to: '/products', text: 'Products' },
-              { to: '/services', text: 'Services' },
-              { to: '/blog', text: 'Blog' }
+              { to: "/", text: "Home" },
+              { to: "/about", text: "About" },
+              { to: "/products", text: "Products" },
+              { to: "/services", text: "Services" },
+              { to: "/blog", text: "Blog" },
             ].map((item) => (
               <Link
                 key={item.text}
                 to={item.to}
-                onClick={() => trackButtonClick(`Nav - ${item.text}`, 'Header')}
+                onClick={() => trackButtonClick(`Nav - ${item.text}`, "Header")}
                 className="group relative px-4 py-2"
               >
                 <div className="nav-text-wrap relative">
@@ -55,7 +57,7 @@ function Navbar() {
                 </div>
               </Link>
             ))}
-            
+
             <PrimaryButton to="/contact" text="Contact Us Now" />
           </div>
 
@@ -87,16 +89,16 @@ function Navbar() {
       {/* Mobile Navigation Menu */}
       <div
         className={`md:hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         } overflow-hidden bg-white border-t border-gray-200`}
       >
         <div className="px-4 pt-2 pb-3 space-y-1">
           {[
-            { to: '/', text: 'Home' },
-            { to: '/about', text: 'About' },
-            { to: '/products', text: 'Products' },
-            { to: '/services', text: 'Services' },
-            { to: '/blog', text: 'Blog' }
+            { to: "/", text: "Home" },
+            { to: "/about", text: "About" },
+            { to: "/products", text: "Products" },
+            { to: "/services", text: "Services" },
+            { to: "/blog", text: "Blog" },
           ].map((item) => (
             <Link
               key={item.text}
@@ -123,4 +125,4 @@ function Navbar() {
   );
 }
 
-export default Navbar; 
+export default Navbar;
