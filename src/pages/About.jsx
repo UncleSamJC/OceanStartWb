@@ -1,5 +1,6 @@
 import React from "react";
 import WhoWeAre from "../components/about/WhoWeAre";
+import beachCoverUpImage from "../assets/images/beach-cover-up.jpg";
 
 function About() {
   return (
@@ -19,46 +20,25 @@ function About() {
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Story</h2>
             <p className="text-gray-600 mb-4">
-              Founded with a passion for excellence, OceanStar has been at the
-              forefront of innovation in our industry. Our journey is defined by
-              a commitment to quality, innovation, and client satisfaction.
+              OceanStar is a custom clothing brand inspired by the vastness of the ocean and stars, embracing the past, present, and future of personalized fashion. We specialize in women's beach and casual cover-ups, custom clothing, and unique embroidery and printing services that bring your vision to life.
             </p>
             <p className="text-gray-600 mb-4">
-              We believe in building lasting relationships with our clients by
-              delivering tailored solutions that exceed expectations and drive
-              success.
+              Our diverse clientele spans from schools and airlines to social organizations, clubs, and corporations for group orders, while our retail customers include families, individuals, and small community groups. With our founder's 25 years of industry expertise and a comprehensive Asian supply chain network, we've established a solid foundation for excellence.
+            </p>
+            <p className="text-gray-600 mb-4">
+              Based in Canada with a physical retail showroom and on-site processing capabilities, we offer end-to-end services from design and material sourcing to production, shipping, and after-sales support. Whether you're an individual seeking a unique piece or a large organization needing custom uniforms, we deliver personalized solutions that meet your specific requirements.
             </p>
           </div>
 
-          <div className="bg-gray-50 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Our Values
-            </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                <span className="text-gray-600">
-                  Excellence in everything we do
-                </span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                <span className="text-gray-600">
-                  Innovation-driven solutions
-                </span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                <span className="text-gray-600">Customer-centric approach</span>
-              </li>
-              <li className="flex items-start">
-                <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                <span className="text-gray-600">
-                  Sustainable business practices
-                </span>
-              </li>
-            </ul>
+          <div>
+            <img 
+              src={beachCoverUpImage} 
+              alt="Beach Cover-up Collection" 
+              className="w-full h-auto rounded-lg shadow-lg object-cover max-h-[450px]"
+            />
           </div>
+
+          
         </div>
       </div>
       <WhoWeAre />

@@ -3,44 +3,29 @@ import SectionBadge from './basic/SectionBadge';
 
 const faqs = [
   {
-    question: 'What is the process for buying a property?',
+    question: 'Why choose custom clothing services?',
     answer:
-      'The process involves selecting the right property, negotiating terms with the agent, signing the contract, and completing the payment. Our professional agents will guide you through every step to ensure a smooth experience.',
+      'Custom clothing offers personalization that perfectly aligns with your individual style or company branding. It meets specific promotional needs, serves as memorable gifts for special occasions or holidays, and ensures your team looks unified and professional.',
   },
   {
-    question: 'How do I determine how much I can afford?',
+    question: 'What specific customization services do you offer?',
     answer:
-      'We recommend consulting with a mortgage specialist who can evaluate your income, expenses, and credit score to provide tailored advice.',
+      'We provide comprehensive customization services including team uniforms, corporate attire, custom suits, T-shirts, hoodies, ties, scarves, and various textile products. All items can be enhanced with professional embroidery or printing services.',
   },
   {
-    question: 'What documents are required for renting a property?',
+    question: 'What is the customization process?',
     answer:
-      'Typically, you will need to provide identification, proof of income (e.g., pay stubs or bank statements), and rental history. Some landlords may also require a security deposit.',
+      'Our streamlined process includes: 1) Providing your original materials and requirements, 2) Consulting with our sales team or submitting details online, 3) Receiving a customization proposal with cost estimates and delivery timeline, 4) Signing the purchase contract or making payment, 5) Delivery and comprehensive after-sales service.',
   },
   {
-    question: 'Can I terminate a lease agreement early?',
+    question: 'Can you show examples of your customization work?',
     answer:
-      'This depends on the terms of your lease agreement. We recommend reviewing the early termination clauses before signing and discussing options with your landlord or agent.',
+      'We showcase a wide range of samples including custom suit collections, corporate ties and scarves, team T-shirts and hoodies, embroidered shoes and bags, and various cover-up designs. Our portfolio demonstrates our versatility across different product categories and customization techniques.',
   },
   {
-    question: 'What are the risks of investing in real estate?',
+    question: 'What are your after-sales service policies and care instructions?',
     answer:
-      'Real estate investment risks may include market fluctuations, maintenance costs, and inconsistent occupancy rates. We offer professional market analysis to help you minimize these risks.',
-  },
-  {
-    question: 'How do I choose the right property to invest in?',
-    answer:
-      'Based on your budget, target returns, and the growth potential of the area, we provide tailored property recommendations and detailed analysis reports.',
-  },
-  {
-    question: 'Do high-end properties support virtual tours?',
-    answer:
-      'Yes, most of our luxury listings include virtual tour options, allowing you to conveniently explore property details online.',
-  },
-  {
-    question: 'How long does the property transfer process take?',
-    answer:
-      'Generally, it takes 30-60 days, depending on local regulations and loan approval timelines. We will assist you throughout the process to ensure everything goes smoothly.',
+      'Please follow care label instructions for washing and maintenance. For printed products, avoid bleach and high-temperature drying. Please note that custom products are final sales - returns or exchanges are not accepted for non-quality issues, as each item is made specifically to your specifications.',
   },
 ];
 
